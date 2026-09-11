@@ -1,4 +1,7 @@
 class Pet: #Pet class
+
+    species = "unknown" #class variable for species
+
     def __init__(self, name, age, species): #initialize the pet with name, age, and species
         self.name = name 
         self.age = age
