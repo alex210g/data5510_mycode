@@ -13,7 +13,6 @@ class NBA_Player():
         return np.mean(self.points)
 
 keyonte_player = NBA_Player("Keyonte", 3, "Jazz", "6'3", [23,25, 43, 10])
-
 lebron_player = NBA_Player("Lebron", 23, "Sixers", "6'8", [30,29,27,22])
 
 print(keyonte_player)
