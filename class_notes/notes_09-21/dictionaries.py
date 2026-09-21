@@ -5,6 +5,8 @@ print(name, id(name))
 name = "andy"
 print(name, id(name))
 
+#these are not changing the original name, each is giving you a new id for each and is grabbing new memory
+
 age = 39
 print(age, id(age))
 age = 40
