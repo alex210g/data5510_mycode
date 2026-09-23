@@ -27,59 +27,13 @@ key_md = 'market_data'
 key_prc = 'current_price'
 key_usd = 'usd'
 
-# start date 2022-05-30  NOTE: integers do not start with 0 in Python like they often do in dates
-dt = datetime(2022, 5, 30)
+date = "23-09-2026"
+coin = "solana"
 
-# example increasing the day by 1
-dt += timedelta(days=1)
-dt_s = dt.strftime("%d-%m-%Y") # string format required by coingecko
-    
-coin = "ethereum"
+url = url1 + coin + url2 + date + url3
 
+request = requests.get(url)
 
-# example generating a url for a specific coin and date
-url = url1 + coin + url2 + dt_s + url3
-    
-#example requesting  data from coingecko
-req = requests.get(url)
-time.sleep(1) # sleep to avoid "too many requests" errors from coingecko
-d = json.loads(req.text)
+dct = json.loads(request.text)
 
-# printing the price
-print(dt_s, d[key_md][key_prc][key_usd])
-
-
-
-
-#####################################################################
-# Running the program, for 365 days and saving to a csv file
-
-
-# create csv file for coin
-curr_dir = os.path.dirname(__file__) # get the current directory of this file
-
-file = open(curr_dir + "/" + coin + ".csv", "w")
-file.write("Date," + coin + "\n")
-
-# iterate through 365 days, request data, write prices to csv
-for i in range(365):
-    # increment day using a timedelta object
-    dt += timedelta(days=1)
-    dt_s = dt.strftime("%d-%m-%Y")
-    
-    # generate url for each day
-    url = url1 + coin + url2 + dt_s + url3
-    print("url: ", url)
-    
-    #request data from coingecko
-    req = requests.get(url)
-    time.sleep(1) # sleep to avoid "too many requests" errors from coingecko
-    d = json.loads(req.text)
-    
-    # write price to csv file, flush allows writing each time
-    print(dt_s, d[key_md][key_prc][key_usd])
-    file.write(dt_s + "," + str(d[key_md][key_prc][key_usd]) + "\n")
-    file.flush()
-
-# close file when done
-file.close()
+print(date, dct[key_md][key_prc][key_usd])
