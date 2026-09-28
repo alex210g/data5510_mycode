@@ -36,4 +36,11 @@ request = requests.get(url)
 
 dct = json.loads(request.text)
 
+#need this to save the data into a json
+curr_dir = os.path.dirname(__file__) #this will get the current directory
+
+#w is to give it write permissions, then this will create your json file
+json.dump(dct, open(curr_dir + "/data/" + coin + ".json", "w"))
+
 print(date, dct[key_md][key_prc][key_usd])
+
