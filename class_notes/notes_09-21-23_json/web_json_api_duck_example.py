@@ -28,8 +28,6 @@ url = 'https://api.datamuse.com/words?ml=' + word
 print(url)
 
 
-
-
 #these are native libraries and are imported above
 # requests stock data from data muse, web request object
 request = requests.get(url) #pulls the url stored above. This does the same thing as entering the url into a browser
