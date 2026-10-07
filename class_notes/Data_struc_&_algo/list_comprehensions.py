@@ -6,6 +6,7 @@ for i in range(100):
 
 print(st)
 
+#first thing to look at in list comprehensions is the for loop, then the expression, and then the if statement.
 st2: [random.randint(1,100) for x in range(200)]
 
 print("st2: \n", st2)
