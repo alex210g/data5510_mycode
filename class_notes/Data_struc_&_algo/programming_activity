@@ -40,7 +40,6 @@ while line:
     prices.append(float(line)) # add one price to the queue
 
     if len(prices) == 6: 
-        
 
 
 
