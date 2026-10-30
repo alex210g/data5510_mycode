@@ -20,18 +20,16 @@ def insert(node, key):
 	# return the (unchanged) node pointer
 	return node
 
-
-search_input = input('Enter the node:' )
-search_item = int(search_input)
-
 def search(root, search_item): 
+	# If you reach none, the tree is empty or doesn't exist. 
 	if root == None:
 		return False
-	
+	# determine if item is larger or smaller than the root, then finds the node
 	elif search_item < root.key: 
 		return search(root.left, search_item)
 	elif search_item > root.key: 
 		return search(root.right, search_item)
+	#hits else if the node is equal to the search item. 
 	else:
 		return True 
 
@@ -41,11 +39,13 @@ if __name__ == "__main__":
 	root = None
 	for item in tree_list:
 		root = insert(root, item)
-	result = search(root, search_item)
-	if result:
-		print(f"{search_item} was found")
-	else: 
-		print(f"{search_item} was not found")
+
+	test_values = [22, 9, 1, 3000, 10]
+	for value in test_values: 
+		if search(root, value):
+			print(f"{value} was found")
+		else: 
+			print(f"{value} was not found")
 
 
 
