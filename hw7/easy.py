@@ -27,30 +27,19 @@ def insert(node, key):
 
 def inorder(root):
 	if root is not None:
+		#find left, print, then find right. 
 		inorder(root.left)
 		print(root.key, end=" ")
 		inorder(root.right)
 		#returns at the end
-
-# Task 4. Write a pre-order print
-def preOrder(root): 
-	if root is not None: 
-		print(root.key, end=" ")
-		inorder(root.left)
-		inorder(root.right)
-
-# Task 5. Write a post-order print
-def postOrder(root): 
-		inorder(root.left)
-		inorder(root.right)
-		print(root.key, end=" ")
 		
-
+#Create a list of values to be inserted into the tree using insert
 if __name__ == "__main__":
 	tree_list = [1,5,10,35, 10, 22, 2, 8, 39, 3000]
 	root = None
 	for item in tree_list:
 		root = insert(root, item)
+	#Print the tree in order. 
 	inorder(root)
 	print()
 		

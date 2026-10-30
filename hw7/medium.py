@@ -39,7 +39,7 @@ if __name__ == "__main__":
 	root = None
 	for item in tree_list:
 		root = insert(root, item)
-
+	#multiple test values, change this list to search for other nodes. 
 	test_values = [22, 9, 1, 3000, 10]
 	for value in test_values: 
 		if search(root, value):

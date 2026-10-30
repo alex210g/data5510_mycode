@@ -1,0 +1,48 @@
+
+1. Deleting a node from a BST: 
+
+You would first need to find the node before being able to complete any delete operations. 
+
+Finding the node would take looking for it using <> to find it. Comparing at each parent wether the node you are looking for is greater than or less then, and taking the correct path depending on the result. Greater than, go right, less than, go left, once you have found a node that is = to the one you are looking for, you have found it. 
+
+
+When deleting a node from a BST, you must figure out what node will become the replacement node. Looking at the largest node of the left subtree, this will become the replacement node, deleting the node, and the left subtree smaller than the current parent, replacement node larger than the left child nodes, and smaller than all the right children. The reason this works is because the largest node in the left subtree will be bigger than all the other nodes in the subtree, smaller than the parent, and smaller than the right tree. 
+
+
+2. Deleting a node with one child: 
+
+If you delete a parent with one child, that child will move up and become the replacement parent node.
+
+
+3. Deleting a nod with two children: 
+
+With two children, you would select the immediate left child, so the left child so that its smaller than the child it inherits. If you select the bigger child(right), then the tree becomes incorrect because there would now be a bigger node as the parent and it would have been the parent itself. You cannot select the immediate left child if it has its own right subtree though, therefore you would have to find the max value in the left subtree, or the right min val. Then replace the deleted node. 
+
+4. Edge cases: 
+
+a. Key not found or an empty tree:  
+
+Key not found
+Cannot delete becuase it wasn’t found, function would return a None value. 
+
+Empty tree
+Return the tree unchanged, because the tree was empty and you hit a None value. 
+
+
+b. Deleting the root node:  
+
+You would have to reassign both the right and left trees of it. The best thing to do would be to find the largest node in the left tree and make that the new parent, if it has any children they should be able to point up to the next parent node. 
+
+d. Duplicates: 
+
+For the code I wrote, they are treated as distinct separate nodes. The bst will delete the specific node instance. Remianind node duplicates will naturally stay in place and maintain BST.
+
+
+e. Lopsided trees: 
+
+This wouldnt really change much, it would just potentially take longer. Changes search and deletion from O(log n) to O(n) which is slower. This is because you may have to scale the entirety of the tree to find the node you are looking for. 
+
+
+
+# AI: 
+I had AI clean up my formatting for this file and make sure it was easy to read. 
