@@ -1,0 +1,12 @@
+logan,odgen,47
+odgen,slc,37
+slc,provo,44
+provo,nephi,20
+nephi,beaver,100
+beaver,cedar_city,75
+cedar_city,st_george,30
+logan,paradise,15
+paradise,ogden,40
+slc,park_city,25
+park_city,heber,15
+heber,provo,20
