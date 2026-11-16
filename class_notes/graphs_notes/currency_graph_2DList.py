@@ -62,21 +62,54 @@ for i in range(len(rates)):
 
 print(edges)
 
+#Create graph
 g = nx.DiGraph()
 
+#Use this because it is a directed graph.
 g.add_weighted_edges_from(edges)
 
+#All simple paths will calculate for you instead of having to do djikstra.
+# Given a source node and a tarket node. 
+exchange_rate_paths = (nx.all_simple_paths(g, source="USD", target="EUR"))
 
-exchange_rate_paths = (nx.all_simple_paths(g, source="USD", target="MXN"))
-
-path_weight = 1.0
+greatest_path_to = 0.0
+path_weight_to = 1.0
 for path in exchange_rate_paths: 
     print(path)
     i = 0
     for node in range(len(path)-1):
         print(path[i],path[i+1],end="")
+        #Give key of first, then second node, then the weight/key?
         print(g[path[i]][path[i+1]]['weight'])
-        path_weight *= g[path[i]][path[i+1]]['weight']
+        path_weight_to *= g[path[i]][path[i+1]]['weight']
         i += 1
-    print("path_weight: ", path_weight)
-    path_weight = 1.0
+    print("path_weight_to: ", path_weight_to)
+    if path_weight_to > greatest_path_to:
+        greatest_path_to = path_weight_to
+    
+    path_weight_to = 1.0
+
+greatest_path_from = 1.0
+path_weight_from = 1.0
+for path in exchange_rate_paths: 
+    print(path)
+    i = 0
+    for node in range(len(path)-1):
+        print(path[i],path[i+1],end="")
+        #Give key of first, then second node, then the weight/key?
+        print(g[path[i]][path[i+1]]['weight'])
+        path_weight_from *= g[path[i]][path[i+1]]['weight']
+        i += 1
+    print("path_weight_from: ", path_weight_from)
+    if path_weight_from > greatest_path_from:
+        greatest_path_from = path_weight_from
+    
+    path_weight_from = 1.0
+
+
+greatest_cycle = greatest_path_from * greatest_path_to
+print("greatest_cycle", greatest_cycle)
+print(greatest_path_from)
+print(greatest_path_to)
+
+# What should print: "greatest_cycle: 1.04458"
